@@ -32,7 +32,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     container:
-      image: ghcr.io/hasiniainahasina1-art/camoufox-system:latest
+      image: ghcr.io/mafibe/camoufox-system:latest
       options: --user camoxuser
       credentials:
         username: ${{ github.actor }}
@@ -41,7 +41,7 @@ jobs:
     steps:
       - name: Cloner le dépôt privé (sans supprimer /app)
         run: |
-          git clone https://${{ secrets.GH_TOKEN }}@github.com/hasiniainahasina1-art/pick-faucet.git /tmp/repo
+          git clone https://${{ secrets.GH_TOKEN }}@github.com/mafibe/Tsara.git /tmp/repo
           cp -r /tmp/repo/* /app/
           cp -r /tmp/repo/.env /app/ 2>/dev/null || true
 
@@ -54,8 +54,8 @@ jobs:
           LOGOUT_PLATFORM: ${{ github.event.inputs.platform }}
           USER_ID: ${{ github.event.inputs.userId }}
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
-          GH_USERNAME: hasiniainahasina1-art
-          GH_REPO: pick-faucet
+          GH_USERNAME: mafibe
+          GH_REPO: Tsara
           GH_BRANCH: main
           CRYPTO_SECRET: ${{ secrets.CRYPTO_SECRET }}
         run: xvfb-run -s "-screen 0 1280x720x24" --auto-servernum python borita.py

@@ -31,7 +31,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 6          # ← Filet de sécurité GitHub niveau job
     container:
-      image: ghcr.io/hasiniainahasina1-art/camoufox-system:latest
+      image: ghcr.io/mafibe/camoufox-system:latest
       options: --user camoxuser
       credentials:
         username: ${{ github.actor }}
@@ -44,11 +44,11 @@ jobs:
           git clone \
             --depth=1 \
             --branch main \
-            https://${{ secrets.GH_TOKEN }}@github.com/hasiniainahasina1-art/pick-faucet.git \
+            https://${{ secrets.GH_TOKEN }}@github.com/mafibe/Tsara.git \
             /tmp/repo
 
           # Copier tout (fichiers cachés inclus)
-          cp -rn /tmp/repo/. /app/
+          cp -r /tmp/repo/. /app/
 
           # Copier .env si présent
           cp /tmp/repo/.env /app/.env 2>/dev/null || true
@@ -82,8 +82,8 @@ jobs:
           CLAIM_PLATFORM: ${{ github.event.inputs.platform }}
           USER_ID: ${{ github.event.inputs.userId }}
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
-          GH_USERNAME: hasiniainahasina1-art
-          GH_REPO: pick-faucet
+          GH_USERNAME: mafibe
+          GH_REPO: Tsara
           GH_BRANCH: main
           CRYPTO_SECRET: ${{ secrets.CRYPTO_SECRET }}
           APP_URL: ${{ secrets.APP_URL }}
